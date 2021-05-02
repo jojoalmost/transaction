@@ -1,7 +1,10 @@
 import React, {FC} from "react";
-import {TransactionStatus} from "../interfaces/transactionInterface";
+import {TransactionStatus} from "../interfaces/transaction";
 
-const CardButton: FC<TransactionStatus> = ({status, children}) => {
+interface InterfaceProps{
+    status: TransactionStatus
+}
+const CardButton: FC<InterfaceProps> = ({status, children}) => {
     switch (status) {
         case "PENDING":
             return (

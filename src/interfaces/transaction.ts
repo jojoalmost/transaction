@@ -1,3 +1,5 @@
+export type TransactionStatus = 'PENDING' | 'SUCCESS';
+
 export interface TransactionInterface {
     account_number: string
     amount: number
@@ -9,10 +11,10 @@ export interface TransactionInterface {
     id: string
     remark: string
     sender_bank: string
-    status: 'PENDING' | 'SUCCESS'
+    status: TransactionStatus
     unique_code: number
 }
 
-export interface TransactionStatus{
-    status: 'PENDING' | 'SUCCESS'
-}
+export type TransactionKey = keyof TransactionInterface;
+
+

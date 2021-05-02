@@ -1,8 +1,9 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useCallback, useEffect, useState} from "react";
 import axios from "axios";
-import {TransactionInterface} from "../../interfaces/transactionInterface";
-import Transaction from "../../components/Transaction";
-import {toIdrCurrency} from "../../utils/helper";
+import {TransactionInterface} from "../../interfaces/transaction";
+import {default as Card} from "../../components/Transaction";
+import {sortBy, toIdrCurrency} from "../../utils/helper";
+import SearchWrapper from "../../components/SearchWrapper";
 
 const List: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -28,19 +29,42 @@ const List: FC = () => {
         })
     }, []);
 
+    const handleChangeSort = (value: string) => {
+        let sortedData: TransactionInterface[] = [...transactions];
+        switch (value) {
+            case 'name-asc':
+                sortedData = sortBy(sortedData, 'beneficiary_name');
+                break;
+            case "name-desc":
+                sortedData = sortBy(sortedData, 'beneficiary_name', 'DESC');
+                break;
+            case "date-asc":
+                sortedData = sortBy(sortedData, 'created_at');
+                break;
+            case "date-desc":
+                sortedData = sortBy(sortedData, 'created_at', 'DESC');
+                break;
+            default:
+                break;
+        }
+        console.log(sortedData);
+        setTransactions(sortedData);
+    }
+
     return (
         <>
             <h1 className="title">Daftar Transaksi</h1>
-            <h3 className="subtitle">Halo kak!</h3>
-            <p>
-                Kamu telah melakukan transaksi sebesar{' '}
-                <span className="text-primary"
-                      style={{fontWeight: 'bold'}}>{toIdrCurrency(grandTotalTransaction)}</span>
-                {' '}sejak menggunakan Flip.
-            </p>
             <div>
-
+                <h3 className="subtitle">Halo kak!</h3>
+                <p>
+                    Kamu telah melakukan transaksi sebesar{' '}
+                    <span className="text-primary"
+                          style={{fontWeight: 'bold'}}>{toIdrCurrency(grandTotalTransaction)}</span>
+                    {' '}sejak menggunakan Flip.
+                </p>
             </div>
+
+            <SearchWrapper onChangeSort={handleChangeSort}/>
 
             {isLoading ? (
                 <>
@@ -49,7 +73,7 @@ const List: FC = () => {
             ) : (
                 <>
                     {transactions?.map((value) => (
-                        <Transaction key={value.id} {...value} />
+                        <Card key={value.id} {...value} />
                     ))}
                 </>
             )}

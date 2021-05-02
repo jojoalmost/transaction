@@ -1,4 +1,4 @@
-import {TransactionInterface} from "../interfaces/transactionInterface";
+import {TransactionInterface} from "../interfaces/transaction";
 import React, {FC} from "react";
 import {dateToLocaleString, toIdrCurrency} from "../utils/helper";
 import CardButton from "./Button";
