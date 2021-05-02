@@ -2,6 +2,7 @@ $primary-color: #fd6542;
 $success-color: #56b586;
 $white: #ffffff;
 $cloud: #f3f7f9;
+$black: #333333;
 
 @font-face {
   @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
@@ -10,6 +11,7 @@ $cloud: #f3f7f9;
 body {
   font-family: 'Lato';
   background: $cloud;
+  color: $black;
 
   .App {
     .container {
@@ -42,6 +44,27 @@ body {
         border-left: 4px solid $success-color;
       }
     }
+
+    .form-search {
+      display: flex;
+      border: 1px solid;
+      background: $white;
+      padding: 0 10px;
+      border-radius: 4px;
+
+      div:first-child {
+        border-right: 1px solid;
+        flex: 1;
+        display: flex;
+        align-items: center;
+      }
+
+      input, select {
+        padding: 12px 6px;
+        border: none;
+        width: 100%;
+      }
+    }
   }
 
   .text-primary {
@@ -57,6 +80,7 @@ body {
       content: " ➔ ";
     }
   }
+
   .description {
     span:first-child::after {
       content: " • ";
@@ -65,11 +89,11 @@ body {
 
   .btn {
     font-family: 'Lato';
-    font-weight: 500;
-    padding: 4px 10px;
+    padding: 6px 10px;
     font-size: 12px;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: 600;
   }
 
   .btn-primary {

@@ -22,9 +22,6 @@ function App() {
                     <Route path="/:id/detail">
                         <Detail/>
                     </Route>
-                    <Route path="*">
-                        {/*<NoMatch />*/}
-                    </Route>
                 </Router>
             </div>
         </div>

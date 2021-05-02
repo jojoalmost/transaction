@@ -4,14 +4,17 @@ import Sort from "./Sort";
 
 interface InterfaceProps {
     onChangeSort: (value: string) => void
+    onChangeSearch: (value: string) => void
+    filterValue: string
+    sortValue: string
 }
 
-const SearchWrapper: FC<InterfaceProps> = ({onChangeSort}) => {
+const SearchWrapper: FC<InterfaceProps> = ({onChangeSort, onChangeSearch, filterValue = '', sortValue = ''}) => {
     return (
-        <>
-            <Search/>
-            <Sort onChange={onChangeSort}/>
-        </>
+        <div className="form-search">
+            <Search onChange={onChangeSearch} value={filterValue}/>
+            <Sort onChange={onChangeSort} value={sortValue}/>
+        </div>
     )
 }
 

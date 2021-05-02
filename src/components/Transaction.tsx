@@ -2,8 +2,10 @@ import {TransactionInterface} from "../interfaces/transaction";
 import React, {FC} from "react";
 import {dateToLocaleString, toIdrCurrency} from "../utils/helper";
 import CardButton from "./Button";
+import {useHistory} from "react-router-dom";
 
 const Transaction: FC<TransactionInterface> = ({
+                                                   id,
                                                    sender_bank,
                                                    beneficiary_bank,
                                                    beneficiary_name,
@@ -11,8 +13,13 @@ const Transaction: FC<TransactionInterface> = ({
                                                    created_at,
                                                    status
                                                }) => {
+    const history = useHistory();
+    const handleClickCard = () => {
+        history.push(`${id}/detail`);
+    }
     return (
-        <div className={`card ${status === 'SUCCESS' ? 'success' : 'primary'}`}>
+        <div onClick={handleClickCard}
+             className={`card ${status === 'SUCCESS' ? 'success' : 'primary'}`}>
             <div style={{flex: 1, alignItems: "center", lineHeight: "22px"}}>
                 <div className="bank-name">
                     <span className="text-uppercase" style={{fontWeight: "bold"}}>{sender_bank}</span>

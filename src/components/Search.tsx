@@ -1,11 +1,21 @@
 import React, {FC} from "react";
 
-const Search: FC = props => {
+interface InterfaceProps {
+    onChange: (value: string) => void
+    value: string | number
+}
+
+const Search: FC<InterfaceProps> = ({onChange, value}) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const {target: {value}} = event;
+        onChange(value);
+    }
     return (
-        <>
-            <input type="text"/>
-        </>
+        <div>
+            <span>Search</span>
+            <input type="text" name="search" onChange={handleChange} placeholder="Cari nama bank" value={value}/>
+        </div>
     )
 }
 
-export default Search
+export default Search;

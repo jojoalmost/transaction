@@ -1,15 +1,18 @@
-import React, {FC, useCallback, useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import axios from "axios";
 import {TransactionInterface} from "../../interfaces/transaction";
 import {default as Card} from "../../components/Transaction";
-import {sortBy, toIdrCurrency} from "../../utils/helper";
+import {filterTransaction, sortBy, sortingTransaction, toIdrCurrency} from "../../utils/helper";
 import SearchWrapper from "../../components/SearchWrapper";
 
 const List: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [grandTotalTransaction, setGrandTotalTransaction] = useState<number>(0);
+    const [listTransaction, setListTransactions] = useState<TransactionInterface[]>([]);
     const [transactions, setTransactions] = useState<TransactionInterface[]>([]);
     const [errorMessage, setErrorMessage] = useState<string>('');
+    const [filter, setFilter] = useState<string>("");
+    const [sortedBy, setSortedBy] = useState<string>("");
 
     useEffect(() => {
         setErrorMessage('');
@@ -20,6 +23,7 @@ const List: FC = () => {
             const granTotal = resToArray.reduce((acc, {amount}) => {
                 return acc + amount
             }, 0);
+            setListTransactions(resToArray);
             setTransactions(resToArray);
             setGrandTotalTransaction(granTotal);
         }).catch((err) => {
@@ -29,26 +33,19 @@ const List: FC = () => {
         })
     }, []);
 
+    useEffect(() => {
+        let setData: TransactionInterface[] = [...transactions];
+        setData = filterTransaction(setData, filter);
+        setData = sortingTransaction(setData, sortedBy);
+        setListTransactions(setData);
+    }, [sortedBy, filter])
+
     const handleChangeSort = (value: string) => {
-        let sortedData: TransactionInterface[] = [...transactions];
-        switch (value) {
-            case 'name-asc':
-                sortedData = sortBy(sortedData, 'beneficiary_name');
-                break;
-            case "name-desc":
-                sortedData = sortBy(sortedData, 'beneficiary_name', 'DESC');
-                break;
-            case "date-asc":
-                sortedData = sortBy(sortedData, 'created_at');
-                break;
-            case "date-desc":
-                sortedData = sortBy(sortedData, 'created_at', 'DESC');
-                break;
-            default:
-                break;
-        }
-        console.log(sortedData);
-        setTransactions(sortedData);
+        setSortedBy(value);
+    }
+
+    const handleChangeSearch = (value: string) => {
+        setFilter(value);
     }
 
     return (
@@ -64,7 +61,11 @@ const List: FC = () => {
                 </p>
             </div>
 
-            <SearchWrapper onChangeSort={handleChangeSort}/>
+            <SearchWrapper onChangeSort={handleChangeSort}
+                           onChangeSearch={handleChangeSearch}
+                           filterValue={filter}
+                           sortValue={sortedBy}
+            />
 
             {isLoading ? (
                 <>
@@ -72,9 +73,15 @@ const List: FC = () => {
                 </>
             ) : (
                 <>
-                    {transactions?.map((value) => (
-                        <Card key={value.id} {...value} />
-                    ))}
+                    {errorMessage ? (
+                        <div>{errorMessage}</div>
+                    ) : (
+                        <>
+                            {listTransaction?.map((value) => (
+                                <Card key={value.id} {...value} />
+                            ))}
+                        </>
+                    )}
                 </>
             )}
         </>)
