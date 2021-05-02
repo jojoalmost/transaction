@@ -1,0 +1,12 @@
+$primary-color: #fd6542;
+$success-color: #56b586;
+$cloud: #f3f7f9;
+
+@font-face {
+  @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+}
+
+body {
+  font-family: 'Lato';
+  background: $cloud;
+}
