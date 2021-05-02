@@ -51,7 +51,7 @@ const List: FC = () => {
     return (
         <>
             <h1 className="title">Daftar Transaksi</h1>
-            <div>
+            <div className="info">
                 <h3 className="subtitle">Halo kak!</h3>
                 <p>
                     Kamu telah melakukan transaksi sebesar{' '}
@@ -68,9 +68,9 @@ const List: FC = () => {
             />
 
             {isLoading ? (
-                <>
+                <div style={{textAlign: "center"}}>
                     <h5>Loading ...</h5>
-                </>
+                </div>
             ) : (
                 <>
                     {errorMessage ? (

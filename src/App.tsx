@@ -2,11 +2,7 @@ import React from 'react';
 import './styles.scss';
 import {
     BrowserRouter as Router,
-    Switch,
     Route,
-    Link,
-    useParams,
-    useRouteMatch
 } from "react-router-dom";
 import List from "./modules/transaction";
 import Detail from "./modules/transaction/detail";

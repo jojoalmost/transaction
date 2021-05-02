@@ -25,7 +25,17 @@ body {
     }
 
     .subtitle {
-      margin: 0;
+      margin: 0 0 8px 0;
+    }
+
+    .info {
+      justify-items: center;
+      max-width: 530px;
+      margin: 0 auto;
+
+      p {
+        margin: 0;
+      }
     }
 
     .card {
@@ -46,23 +56,29 @@ body {
     }
 
     .form-search {
+      margin: 20px 0;
       display: flex;
-      border: 1px solid;
+      border: 1px solid #ced4da;
       background: $white;
-      padding: 0 10px;
+      padding: 0 16px;
       border-radius: 4px;
 
       div:first-child {
-        border-right: 1px solid;
+        border-right: 1px solid #ced4da;
         flex: 1;
         display: flex;
         align-items: center;
       }
 
       input, select {
+        font-family: "Lato";
         padding: 12px 6px;
         border: none;
         width: 100%;
+      }
+
+      input:focus {
+        outline: none;
       }
     }
   }

@@ -1,4 +1,5 @@
 import React, {FC} from "react";
+import {ReactComponent as Loupe} from '../assets/loupe.svg'
 
 interface InterfaceProps {
     onChange: (value: string) => void
@@ -12,7 +13,9 @@ const Search: FC<InterfaceProps> = ({onChange, value}) => {
     }
     return (
         <div>
-            <span>Search</span>
+            <span style={{paddingRight: 16}}>
+                <Loupe width={16} height={16} fill="#dddddd"/>
+            </span>
             <input type="text" name="search" onChange={handleChange} placeholder="Cari nama bank" value={value}/>
         </div>
     )
