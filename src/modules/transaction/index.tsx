@@ -77,9 +77,13 @@ const List: FC = () => {
                         <div>{errorMessage}</div>
                     ) : (
                         <>
-                            {listTransaction?.map((value) => (
+                            {listTransaction.length > 0 ? listTransaction?.map((value) => (
                                 <Card key={value.id} {...value} />
-                            ))}
+                            )) : (
+                                <div style={{textAlign: "center"}}>
+                                    <h5>Pencarian dengan kata <span>{filter}</span> tidak ditemukan</h5>
+                                </div>
+                            )}
                         </>
                     )}
                 </>

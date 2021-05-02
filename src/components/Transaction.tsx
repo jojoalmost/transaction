@@ -31,7 +31,7 @@ const Transaction: FC<TransactionInterface> = ({
                     <span>{dateToLocaleString(created_at)}</span></div>
             </div>
             <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <CardButton status={status}/>
+                <CardButton status={status} onClick={handleClickCard}/>
             </div>
         </div>
     )
