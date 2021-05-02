@@ -31,10 +31,15 @@ const List: FC = () => {
     return (
         <>
             <h1 className="title">Daftar Transaksi</h1>
-            <h3>Halo kak!</h3>
-            <p>Kamu telah melakukan transaksi sebesar <span>{toIdrCurrency(grandTotalTransaction)}</span> sejak menggunakan Flip.</p>
+            <h3 className="subtitle">Halo kak!</h3>
+            <p>
+                Kamu telah melakukan transaksi sebesar{' '}
+                <span className="text-primary"
+                      style={{fontWeight: 'bold'}}>{toIdrCurrency(grandTotalTransaction)}</span>
+                {' '}sejak menggunakan Flip.
+            </p>
             <div>
-                <input type="text"/>
+
             </div>
 
             {isLoading ? (

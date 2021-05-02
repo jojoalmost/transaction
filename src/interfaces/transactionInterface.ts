@@ -12,3 +12,7 @@ export interface TransactionInterface {
     status: 'PENDING' | 'SUCCESS'
     unique_code: number
 }
+
+export interface TransactionStatus{
+    status: 'PENDING' | 'SUCCESS'
+}

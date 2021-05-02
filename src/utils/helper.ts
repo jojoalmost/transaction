@@ -1,6 +1,10 @@
 export const dateToLocaleString = (dateTime: string) => {
     const date = new Date(dateTime);
-    return date.toLocaleString('id-ID');
+    return date.toLocaleString('id-ID', {
+        day: "numeric",
+        year: "numeric",
+        month: "long"
+    });
 }
 
 export const toIdrCurrency = (amount: number) => {

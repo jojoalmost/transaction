@@ -14,17 +14,19 @@ import Detail from "./modules/transaction/detail";
 function App() {
     return (
         <div className="App">
-            <Router>
-                <Route exact path="/">
-                    <List />
-                </Route>
-                <Route path="/:id/detail">
-                    <Detail />
-                </Route>
-                <Route path="*">
-                    {/*<NoMatch />*/}
-                </Route>
-            </Router>
+            <div className="container">
+                <Router>
+                    <Route exact path="/">
+                        <List/>
+                    </Route>
+                    <Route path="/:id/detail">
+                        <Detail/>
+                    </Route>
+                    <Route path="*">
+                        {/*<NoMatch />*/}
+                    </Route>
+                </Router>
+            </div>
         </div>
     );
 }

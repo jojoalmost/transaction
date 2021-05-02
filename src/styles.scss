@@ -1,5 +1,6 @@
 $primary-color: #fd6542;
 $success-color: #56b586;
+$white: #ffffff;
 $cloud: #f3f7f9;
 
 @font-face {
@@ -9,4 +10,76 @@ $cloud: #f3f7f9;
 body {
   font-family: 'Lato';
   background: $cloud;
+
+  .App {
+    .container {
+      max-width: 550px;
+      margin: 20px auto 20px;
+    }
+
+    .title {
+      font-weight: normal;
+      text-align: center;
+    }
+
+    .subtitle {
+      margin: 0;
+    }
+
+    .card {
+      margin-top: 8px;
+      background: $white;
+      border-radius: 4px;
+      padding: 10px 14px;
+      display: flex;
+      cursor: pointer;
+
+      &.primary {
+        border-left: 4px solid $primary-color;
+      }
+
+      &.success {
+        border-left: 4px solid $success-color;
+      }
+    }
+  }
+
+  .text-primary {
+    color: $primary-color;
+  }
+
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+
+  .bank-name {
+    span:first-child::after {
+      content: " ➔ ";
+    }
+  }
+  .description {
+    span:first-child::after {
+      content: " • ";
+    }
+  }
+
+  .btn {
+    font-family: 'Lato';
+    font-weight: 500;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: transparent;
+    border: 1px solid $primary-color;
+  }
+
+  .btn-success {
+    color: $white;
+    background: $success-color;
+    border: 1px solid $success-color;
+  }
 }
