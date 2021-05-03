@@ -43,12 +43,12 @@ const Detail: FC = () => {
                     <div>
                         <div className="detail-info">
                             <h5>Pengirim</h5>
-                            <div>{sender_bank}</div>
+                            <div className="text-uppercase">{sender_bank}</div>
                         </div>
 
                         <div className="detail-info">
                             <h5>penerima</h5>
-                            <div>{beneficiary_bank}</div>
+                            <div className="text-uppercase">{beneficiary_bank}</div>
                             <div>{account_number}</div>
                             <div>{beneficiary_name}</div>
                         </div>

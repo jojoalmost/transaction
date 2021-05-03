@@ -10,7 +10,6 @@ const List: FC = () => {
     const [filter, setFilter] = useState<string>("");
     const [sortedBy, setSortedBy] = useState<string>("");
     const {
-        isLoading,
         errorMessage,
         transactions,
         grandTotal,
@@ -50,24 +49,16 @@ const List: FC = () => {
                            sortValue={sortedBy}
             />
 
-            {isLoading ? (
-                <div style={{textAlign: "center"}}>
-                    <h5>Loading ...</h5>
-                </div>
+            {errorMessage ? (
+                <div>{errorMessage}</div>
             ) : (
                 <>
-                    {errorMessage ? (
-                        <div>{errorMessage}</div>
-                    ) : (
-                        <>
-                            {listTransaction.length > 0 ? listTransaction?.map((value) => (
-                                <Card key={value.id} {...value} />
-                            )) : (
-                                <div style={{textAlign: "center"}}>
-                                    <h5>Pencarian dengan kata <span>{filter}</span> tidak ditemukan</h5>
-                                </div>
-                            )}
-                        </>
+                    {listTransaction.length > 0 ? listTransaction?.map((value) => (
+                        <Card key={value.id} {...value} />
+                    )) : (
+                        <div style={{textAlign: "center"}}>
+                            <h5>Pencarian dengan kata <span>{filter}</span> tidak ditemukan</h5>
+                        </div>
                     )}
                 </>
             )}
