@@ -20,7 +20,7 @@ const List: FC = () => {
         setData = filterTransaction(setData, filter);
         setData = sortingTransaction(setData, sortedBy);
         setListTransactions(setData);
-    }, [sortedBy, filter])
+    }, [sortedBy, filter, transactions])
 
     const handleChangeSort = (value: string) => {
         setSortedBy(value);
