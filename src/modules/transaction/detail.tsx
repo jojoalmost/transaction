@@ -28,8 +28,11 @@ const Detail: FC = () => {
         return (
             <>
                 <h1 className="title">Detail Transaksi</h1>
-                <div className="card-detail-info" style={{alignItems: "center", marginBottom: 16}}>
-                    <div className="text-uppercase" style={{flex: 1, fontWeight: 600}}>
+                <div className="card-detail-info"
+                     style={{alignItems: "center", marginBottom: 16}}
+                >
+                    <div className="text-uppercase"
+                         style={{flex: 1, fontWeight: 600}}>
                         id transaksi: #{id}
                     </div>
                     <div>
@@ -39,7 +42,9 @@ const Detail: FC = () => {
                 </div>
 
                 <div className="card-detail-info" style={{marginBottom: 16}}>
-                    <div style={{paddingRight: 16}}><Harddrive width={50} height={50} fill="#fd6542"/></div>
+                    <div style={{paddingRight: 16}}>
+                        <Harddrive width={50} height={50} fill="#fd6542"/>
+                    </div>
                     <div>
                         <div className="detail-info">
                             <h5>Pengirim</h5>
@@ -71,7 +76,10 @@ const Detail: FC = () => {
                     </div>
                 </div>
 
-                <button type="button" onClick={() => history.push("/")} className="btn btn-outline-primary">Kembali
+                <button type="button"
+                        onClick={() => history.push("/")}
+                        className="btn btn-outline-primary">
+                    Kembali
                 </button>
             </>
         )
@@ -80,8 +88,10 @@ const Detail: FC = () => {
         <>
             <h1 className="title">Transaksi tidak ditemukan</h1>
             <div style={{display: "flex", justifyContent: "center"}}>
-                <button style={{display: "block", width: "80%"}} type="button" onClick={() => history.push("/")}
-                        className="btn btn-outline-primary">
+                <button style={{display: "block", width: "80%"}}
+                        type="button" onClick={() => history.push("/")}
+                        className="btn btn-outline-primary"
+                >
                     Kembali
                 </button>
             </div>

@@ -1,14 +1,6 @@
 import React, {createContext, FC, useContext, useEffect, useState} from "react";
 import axios from "axios";
-import {TransactionInterface} from "../../../interfaces/transaction";
-
-interface TransactionContextObject {
-    isLoading: boolean;
-    errorMessage: string,
-    transactions: TransactionInterface[],
-    grandTotal: number,
-    transactionDetail?: (transactionId: string) => TransactionInterface,
-}
+import {TransactionContextObject, TransactionInterface} from "../../../interfaces/transaction";
 
 const initialValue: TransactionContextObject = {
     isLoading: true,

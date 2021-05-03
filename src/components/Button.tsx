@@ -9,11 +9,23 @@ const CardButton: FC<InterfaceProps> = ({status, onClick}) => {
     switch (status) {
         case "PENDING":
             return (
-                <button type="button" onClick={onClick} className="btn btn-primary">Pengecekan</button>
+                <button
+                    type="button"
+                    onClick={onClick}
+                    className="btn btn-primary"
+                >
+                    Pengecekan
+                </button>
             )
         case "SUCCESS":
             return (
-                <button type="button" onClick={onClick} className="btn btn-success">Berhasil</button>
+                <button
+                    type="button"
+                    onClick={onClick}
+                    className="btn btn-success"
+                >
+                    Berhasil
+                </button>
             )
         default:
             return null;

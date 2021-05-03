@@ -18,3 +18,10 @@ export interface TransactionInterface {
 export type TransactionKey = keyof TransactionInterface;
 
 
+export interface TransactionContextObject {
+    isLoading: boolean;
+    errorMessage: string;
+    transactions: TransactionInterface[];
+    grandTotal: number;
+    transactionDetail?: (transactionId: string) => TransactionInterface;
+}

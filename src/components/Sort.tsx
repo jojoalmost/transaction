@@ -12,7 +12,13 @@ const Sort: FC<InterfaceProps> = ({onChange, value = ""}) => {
     }
     return (
         <div>
-            <select name="sort" id="sort" onChange={handleChange} placeholder="Urutkan" value={value}>
+            <select
+                name="sort"
+                id="sort"
+                onChange={handleChange}
+                placeholder="Urutkan"
+                value={value}
+            >
                 <option value="" disabled>Urutkan</option>
                 <option value="name-asc">Nama A-Z</option>
                 <option value="name-desc">Nama Z-A</option>
